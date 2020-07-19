@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<div class="row"><div class="col-md-12">
+    <table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th>Image name</th>
+        <th>Extracted text</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+    {% for img in images %}
+
+        <th colspan="2" align="left">
+            {% img.img_name %}
+        </th>
+        <th colspan="2" align="left">
+            <textarea name="text" rows="3" id="text" style="min-width: 100%;resize:none">
+            {% img.converted_text %}
+            </textarea>
+        </th>
+
+
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock main %}
