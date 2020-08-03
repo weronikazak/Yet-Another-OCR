@@ -1,27 +1,5 @@
 {% extends 'index.html' %}
 
-{% block main %}
-
-    <h1 class="cover-heading">Typical Text Converter</h1>
-    <p class="lead">Yet another typical text converter. Upload your files and I'll extract the text from 'em. Pure magic.</p>
-    <p class="lead">
-
-        <form method="POST" enctype="multipart/form-data">
-        <input type="file" id="file" name="file" multiple/>
-        <label for="file">choose a file</label>
-
-        <div class="container col-md-4">
-        <ul class="list-group" id="selectedfiles"></ul>
-        </div>
-
-        <input type="submit" class="btn btn-lg btn-secondary" value="UPLOAD">
-
-    </form>
-
-    </p>
-
-{% endblock main %}
-
 {% block scripts %}
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/showList.js') }}" />></script>
 {% endblock scripts %}

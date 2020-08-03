@@ -19,20 +19,30 @@
 </header>
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <!-- <header class="masthead mb-auto">
-      <div class="inner">
-        <h3 class="masthead-brand">Cover</h3>
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="#">Features</a>
-          <a class="nav-link" href="#">Contact</a>
-        </nav>
-      </div> -->
-    </header>
   
     <main role="main" class="inner cover">
-    {% block main %}
-    {% endblock main %}
+    
+
+
+    <h1 class="cover-heading">Typical Text Converter</h1>
+    <p class="lead">Yet another typical text converter. Upload your files and I'll extract the text from 'em. Pure magic.</p>
+    <p class="lead">
+
+        <form method="POST" enctype="multipart/form-data" action="upload">
+        <input type="file" name="file[]" id="file" name="file" multiple=""/>
+        <label for="file">choose a file</label>
+
+        <div class="container col-md-4">
+        <ul class="list-group" id="selectedfiles"></ul>
+        </div>
+
+        <input type="submit" class="btn btn-lg btn-secondary" value="UPLOAD">
+
+    </form>
+
+    </p>
+
+
     </main>
   
     <footer class="mastfoot mt-auto">
