@@ -9,6 +9,12 @@
   </head>
   <body class="text-center">
 
+    <div class="btn-group-vertical" id="fixedButtons">
+        <button class="btn btn-primary"> WORD </button>
+        <button class="btn btn-info"> PDF </button>
+        <button class="btn btn-dark"> TXT </button>
+    </div>
+
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
@@ -20,7 +26,7 @@
 
     <div class="col-8 container">
         <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead" style="background: #f15d22;color: #fff">
             <tr class="d-flex">
                 <th class="col-6">Image name</th>
                 <th class="col-6">Extracted text</th>
@@ -29,13 +35,13 @@
         <tbody>
 
 
-        {% for file in filenames %}
+        {% for file_name, text_file in files %}
         <tr class="d-flex">
           <th class="col-6">
-            <a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a>
+            <a href="{{url_for('uploaded_file', filename=file_name)}}" target="_blank"><img  src="{{url_for('uploaded_file', filename=file_name)}}" height="300"></a>
          </th>
          <th class="col-6">
-            <textarea name="text" rows="3" id="text" style="min-width: 100%;resize:none"  class="form-control">TEXTTTTTT</textarea>
+            <textarea name="text" rows="3" id="text" style="min-width: 100%;resize:none;min-height:300px" class="form-control">{{text_file}}</textarea>
             </th>
         </tr>
         {% endfor %}

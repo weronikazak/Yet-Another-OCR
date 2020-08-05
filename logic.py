@@ -1,20 +1,15 @@
-try:
-    from PIL import Image
-except ImportError:
-    import Image
-
 import pytesseract
+import cv2
+
 
 def find_text(filename):
-    text = pytesseract.image_to_stripng(Image.open(filename))
-
-    return text
-
-def change_to_png(filename):
-    file_ext = filename.split(".")[-1]
-    if file_ext.lower() is not "png":
-        img = cv2.imread(filename)
-        os.remove(filename)
-        filename = filename[:-len(file_ext)] + "png"
-        cv2.imwrite(filename, img)
-    return filename
+    img = cv2.imread(filename, 0)
+    ret, gray = cv2.threshold(img, 190, 255, cv2.THRESH_BINARY)
+    text = pytesseract.image_to_string(gray, lang="pol+eng")
+    text = text.split("\n")
+    r_text = []
+    for line in text:
+        if not line.isspace():
+            r_text.append(line)
+    text = "\n".join(r_text[1:])
+    return text.replace('|', "I")

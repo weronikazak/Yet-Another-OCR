@@ -21,21 +21,7 @@ position: relative;
 transition: all 0.3s;
 vertical-align: middle;
 }
-/*     
-&:hover {
-    background-color: darken(#f15d22, 10%);
-}
 
-&.btn-1 {
-    background-color: #f79159;
-    box-shadow: 0 6px darken(#f79159, 10%);
-    transition: none;
-
-    &:hover {
-    box-shadow: 0 4px darken(#f79159, 10%);
-    top: 2px;
-    }
-} */
 .close {
     cursor: pointer;
     position: absolute;
@@ -53,15 +39,8 @@ vertical-align: middle;
   margin: 0;
 }
 
-/* Style the list items */
-/* ul li {
-  border: 1px solid #ddd;
-  margin-top: -1px;
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  position: relative;
-} */
+#fixedButtons {
+    position: fixed  !important;
+    bottom: 0px !important;
+    right: 0px  !important; 
+}
