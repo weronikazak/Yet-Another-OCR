@@ -6,13 +6,37 @@
     <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="text-center">
 
-    <div class="btn-group-vertical" id="fixedButtons">
-        <button class="btn btn-primary"> WORD </button>
-        <button class="btn btn-info"> PDF </button>
-        <button class="btn btn-dark"> TXT </button>
+
+    <!-- FORM -->
+    <form action="{{ url_for('save_file') }}" method="post">
+
+
+    <div class="btn-group-vertical position-fixed fixed-buttons m-2"
+    style="bottom: 45vh;right: 0">
+        <button type="submit" name="action" value="word" class="btn btn-primary btn-lg pl-10">
+            <span style="position: relative; left: 0;float: left;" class="mr-2">
+                <i class="fa fa-file-word-o" style="font-size:24px"></i> 
+            </span>
+            <span> WORD </span>
+        </button>
+
+        <button type="submit" name="action" value="pdf" class="btn btn-info btn-lg pl-10">
+            <span style="position: relative; left: 0;float: left;" class="mr-2">
+                <i class="fa fa-file-pdf-o" style="font-size:24px"></i> 
+            </span>
+            <span> PDF </span>
+        </button>
+
+        <button type="submit" name="action" value="txt" class="btn btn-dark btn-lg pl-10">
+            <span style="position: relative; left: 0;float: left;" class="mr-2">
+                <i class="fa fa-file-pdf-o" style="font-size:24px"></i> 
+            </span>
+            <span> TXT </span>
+        </button>
     </div>
 
 
@@ -22,13 +46,13 @@
 
 
     <h1 class="cover-heading" >Typical Text Converter</h1>
-    <p class="lead">Here you go. Your converted messages. No need to thank.</p>
+    <p class="lead">Here you go. Your converted messages. Use it in a wise way, traveller.</p>
 
     <div class="col-8 container">
         <table class="table">
         <thead class="thead" style="background: #f15d22;color: #fff">
             <tr class="d-flex">
-                <th class="col-6">Image name</th>
+                <th class="col-6">Image</th>
                 <th class="col-6">Extracted text</th>
             </tr>
         </thead>
@@ -41,7 +65,7 @@
             <a href="{{url_for('uploaded_file', filename=file_name)}}" target="_blank"><img  src="{{url_for('uploaded_file', filename=file_name)}}" height="300"></a>
          </th>
          <th class="col-6">
-            <textarea name="text" rows="3" id="text" style="min-width: 100%;resize:none;min-height:300px" class="form-control">{{text_file}}</textarea>
+            <textarea name="message[]" rows="3" id="text" style="min-width: 100%;resize:none;min-height:300px" class="form-control">{{text_file}}</textarea>
             </th>
         </tr>
         {% endfor %}
@@ -53,6 +77,15 @@
     </main>
 
     </div>
+
+    </form>
+    <!-- FORM -->
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Made by <a href="https://github.com/weronikazak" target="_blank">Weronika Zak</a>.</p>
+      </div>
+    </footer>
 
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

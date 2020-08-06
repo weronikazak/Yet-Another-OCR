@@ -10,6 +10,7 @@ def find_text(filename):
     r_text = []
     for line in text:
         if not line.isspace():
-            r_text.append(line)
+            if line != "\n":
+                r_text.append(line)
     text = "\n".join(r_text[1:])
     return text.replace('|', "I")

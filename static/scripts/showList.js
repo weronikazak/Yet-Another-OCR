@@ -18,13 +18,25 @@ function handleFileSelect(e) {
 		var f = files[i];
 		
 		selDiv.innerHTML += '<li class="list-group-item d-flex justify-content-between align-items-center">'
-		+ f.name + '<span class="close" onclick="removeImage($(this))">x</span><li/>';
+		+ f.name + '<span class="close" onclick="removeItem($(this))">x</span><li/>';
 	}
 }
 
-function removeImage(item) {
-	//alert(item);
-	 item.parent().remove();
+function removeItem(item) {
+	item.parent().remove();
+
+	selDiv.innerHTML = "";
+
+	var files = e.target.files;
+	for(var i=0; i<files.length; i++) {
+		var f = files[i];
+		console.log(f)
+		console.log(item)
+		if f != item {
+			selDiv.innerHTML += '<li class="list-group-item d-flex justify-content-between align-items-center">'
+				+ f.name + '<span class="close" onclick="removeItem($(this))">x</span><li/>';
+		}
+	}
   }
 
 $( document ).ready(function(){
